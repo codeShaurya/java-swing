@@ -1,20 +1,32 @@
-
+import java.awt.event.*;
 import javax.swing.*;
 
 public class MyButton extends JFrame {
-    MyButton(){
-        setSize(600,900);
+    public MyButton() {
+        JFrame f = new JFrame("Swing Frame");
 
-        JButton b = new JButton("add text");
-        b.setBounds(130,100,100, 40);
+        final JTextField tf = new JTextField();
+        tf.setBounds(50,50, 150,20);
 
-        add(b);
+        JButton b = new JButton("Click Here");
+        b.setBounds(50,100,95,30);
 
-        setLayout(null);
-        setVisible(true);
-    }
+        JTextArea area = new JTextArea("Input will appear here");
+        area.setBounds(50,200, 300,30);
 
-    public static void main(String[] args) {
-        new MyButton();
+        b.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                        String s = tf.getText();
+                        area.setText(s);
+            }
+        });
+
+        f.add(b);
+        f.add(tf);
+        f.add(area);
+        f.setSize(900,600);
+        f.setLayout(null);
+        f.setVisible(true);
+
     }
 }  
